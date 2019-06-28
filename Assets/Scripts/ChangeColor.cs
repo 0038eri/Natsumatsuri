@@ -12,12 +12,14 @@ public class ChangeColor : MonoBehaviour
   {
     m_InteractiveItem.OnOver += HandleOver;
     m_InteractiveItem.OnOut += HandleOut;
+    m_InteractiveItem.OnClick += HandleClick;
   }
 
   private void OnDisable()
   {
     m_InteractiveItem.OnOver -= HandleOver;
     m_InteractiveItem.OnOut -= HandleOut;
+    m_InteractiveItem.OnClick -= HandleClick;
   }
 
   // 視線が当たったとき
@@ -33,4 +35,14 @@ public class ChangeColor : MonoBehaviour
     isGazeOver = false;
     gameObject.GetComponent<Renderer>().material.color = Color.white;
   }
+
+  // Clickされたとき
+  private void HandleClick()
+  {
+    if (isGazeOver)
+    {
+      gameObject.GetComponent<Renderer>().material.color = Color.green;
+    }
+  }
+
 }
