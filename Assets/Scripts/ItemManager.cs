@@ -1,21 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
   public GameObject item_prefab;
 
   private GameObject item;
-  private Item item_;
+  private Item _item;
 
   private int steps = 0;
   private bool itemFlag = false;
   private bool triggerFlag = false;
 
+  private GameObject debugObj2;
+  private Text debugText2;
+
+  void Start()
+  {
+    debugObj2 = GameObject.Find("DebugText2");
+    debugText2 = debugObj2.GetComponent<Text>();
+  }
 
   void Update()
   {
+    debugText2.text = steps.ToString();
+
     if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
     {
       if (triggerFlag == false)
@@ -30,7 +41,7 @@ public class ItemManager : MonoBehaviour
       if (itemFlag == false)
       {
         item = Instantiate(item_prefab, transform.position, transform.rotation);
-        item_ = item.GetComponent<Item>();
+        _item = item.GetComponent<Item>();
         itemFlag = true;
       }
     }
@@ -41,7 +52,7 @@ public class ItemManager : MonoBehaviour
         if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
           steps++;
-          item_.receiveSteps();
+          _item.receiveSteps();
         }
       }
     }
@@ -66,12 +77,12 @@ public class ItemManager : MonoBehaviour
     if (steps == 1)
     {
       steps = 2;
-      item_.receiveSteps();
+      _item.receiveSteps();
     }
     else if (steps == 3)
     {
       steps = 4;
-      item_.receiveSteps();
+      _item.receiveSteps();
     }
     else if (steps == 4)
     {
