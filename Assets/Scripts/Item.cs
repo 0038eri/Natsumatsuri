@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
   private Rigidbody _rigidbody;
   private Vector3 _transform;
   private Vector3 _velocity;
+  [SerializeField] private float velocityValue;
 
   private GameObject debugObj0;
   private GameObject debugObj1;
@@ -20,6 +21,8 @@ public class Item : MonoBehaviour
 
   private GameObject itemManager;
   private ItemManager item_manager;
+
+  public OVRInput.Controller controller;
 
   void Start()
   {
@@ -44,11 +47,13 @@ public class Item : MonoBehaviour
     if (steps == 2)
     {
       transform.position = itemManager.transform.position;
+      transform.rotation = itemManager.transform.rotation;
     }
     else if (steps == 3)
     {
-      _velocity = transform.position - _transform;
-      _rigidbody.velocity = _velocity;
+      _velocity = transform.localPosition;
+      _rigidbody.velocity = _velocity * velocityValue;
+      transform.localRotation = OVRInput.GetLocalControllerRotation(controller);
       debugText3.text = _velocity.ToString();
     }
     else if (steps == 4)
@@ -59,7 +64,7 @@ public class Item : MonoBehaviour
       }
     }
 
-    _transform = transform.position;
+    _transform = transform.localPosition;
   }
 
   public void receiveSteps()
