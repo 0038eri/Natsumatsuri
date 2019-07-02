@@ -14,19 +14,13 @@ public class ItemManager : MonoBehaviour
   private bool itemFlag = false;
   private bool triggerFlag = false;
 
-  private GameObject debugObj2;
-  private Text debugText2;
-
   void Start()
   {
-    debugObj2 = GameObject.Find("DebugText2");
-    debugText2 = debugObj2.GetComponent<Text>();
+
   }
 
   void Update()
   {
-    debugText2.text = steps.ToString();
-
     if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
     {
       if (triggerFlag == false)
@@ -72,7 +66,7 @@ public class ItemManager : MonoBehaviour
     }
   }
 
-  void FixedUpdate()
+  void LateUpdate()
   {
     if (steps == 1)
     {
