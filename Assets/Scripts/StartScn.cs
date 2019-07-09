@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartScn : MonoBehaviour
 {
 
-  [SerializeField] private Text debugText;
+  [SerializeField] private Text debugText1;
 
   private int selectSteps = 0;
   [SerializeField] private float speed;
@@ -82,7 +82,7 @@ public class StartScn : MonoBehaviour
     }
     else if (selectSteps == 5)
     {
-      if (alfa < 255.0f)
+      if (alfa < 1.0f)
       {
         alfa += speed;
         panel_.color = new Color(red, green, blue, alfa);
@@ -109,7 +109,7 @@ public class StartScn : MonoBehaviour
       }
     }
 
-    debugText.text = selectSteps.ToString();
+    debugText1.text = alfa.ToString();
   }
 
   public void Yoyo()

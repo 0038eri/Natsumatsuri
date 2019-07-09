@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: a203cb47a317440d485e764da4d43401
   - enabled: 1
+    path: Assets/Scenes/Yoyo.unity
+    guid: f0206b424b2304c0bbb066d22cca99af
+  - enabled: 1
     path: Assets/Scenes/Syateki.unity
     guid: 7758ba259e6ff4709b39359f7c99fc09
   - enabled: 1
     path: Assets/Scenes/Wanage.unity
     guid: 443c79c33b9ff4b9d8611bf055c61413
-  - enabled: 1
-    path: Assets/Scenes/Yoyo.unity
-    guid: a05dd32f16edb4f6ca51de425520a214
   - enabled: 1
     path: Assets/Scenes/Prefab2.unity
     guid: 3ffbe113d2f6b4e7ab6ed31e57ada89a
