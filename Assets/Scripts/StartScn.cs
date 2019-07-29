@@ -99,17 +99,13 @@ public class StartScn : MonoBehaviour
             syatekiMethod();
             break;
 
-          case "wanage":
-            syatekiMethod();
-            break;
-
           default:
             break;
         }
       }
     }
 
-    debugText1.text = alfa.ToString();
+    debugText1.text = selectSteps.ToString();
   }
 
   public void Yoyo()
@@ -132,17 +128,6 @@ public class StartScn : MonoBehaviour
   void syatekiMethod()
   {
     SceneManager.LoadScene("Syateki");
-  }
-
-  public void Wanage()
-  {
-    selectSteps = 5;
-    sceneName = "wanage";
-  }
-
-  void wanageMethod()
-  {
-    SceneManager.LoadScene("Wanage");
   }
 
 }

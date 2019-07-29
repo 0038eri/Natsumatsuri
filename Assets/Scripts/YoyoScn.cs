@@ -79,13 +79,16 @@ public class YoyoScn : MonoBehaviour
         SceneManager.LoadScene("Start");
       }
     }
-
-    debugtext.text = systemSteps.ToString();
   }
 
   public void System()
   {
     systemSteps = 3;
+  }
+
+  public void Debug()
+  {
+    debugtext.text = "きた！".ToString();
   }
 
 }

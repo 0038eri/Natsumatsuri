@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemManager : MonoBehaviour
+public class WaManager : MonoBehaviour
 {
   public GameObject item_prefab;
 
-  private GameObject item;
-  private Item _item;
+  private GameObject wa;
+  private Wa _item;
 
   private int steps = 0;
   private bool itemFlag = false;
   private bool triggerFlag = false;
 
-  void Start()
-  {
-
-  }
+  private int point = 0;
+  [SerializeField] private int add;
+  [SerializeField] private Text text;
 
   void Update()
   {
-    if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
+    if (Input.GetKeyDown(KeyCode.Space))
     {
       if (triggerFlag == false)
       {
@@ -34,8 +33,8 @@ public class ItemManager : MonoBehaviour
     {
       if (itemFlag == false)
       {
-        item = Instantiate(item_prefab, transform.position, transform.rotation);
-        _item = item.GetComponent<Item>();
+        wa = Instantiate(item_prefab, transform.position, transform.rotation);
+        _item = wa.GetComponent<Wa>();
         itemFlag = true;
       }
     }
@@ -43,7 +42,7 @@ public class ItemManager : MonoBehaviour
     {
       if (triggerFlag == true)
       {
-        if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
           steps++;
           _item.receiveSteps();
@@ -60,10 +59,11 @@ public class ItemManager : MonoBehaviour
     }
     else if (steps == 5)
     {
-      steps = 0;
       itemFlag = false;
       triggerFlag = false;
     }
+
+    text.text = "point: " + point.ToString();
   }
 
   void LateUpdate()
@@ -80,10 +80,15 @@ public class ItemManager : MonoBehaviour
     }
     else if (steps == 4)
     {
-      if (item == null)
+      if (wa == null)
       {
+        point += add;
         steps = 5;
       }
+    }
+    else if (steps == 5)
+    {
+      steps = 0;
     }
   }
 
