@@ -18,7 +18,7 @@ public class shatekiManager : MonoBehaviour
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
     {
       Shot();
     }
